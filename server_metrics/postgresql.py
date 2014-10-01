@@ -12,7 +12,5 @@ def get_database_size(db_user, db_name):
     """
     cmd = 'psql -U {0} -c "select pg_database_size(\'{1}\');"'.format(
         db_user, db_name)
-    print cmd
     total = commands.getoutput(cmd).split()[2]
-    print total
     total = int(total)
