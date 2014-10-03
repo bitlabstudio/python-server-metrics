@@ -14,3 +14,4 @@ def get_database_size(db_user, db_name):
         db_user, db_name)
     total = commands.getoutput(cmd).split()[2]
     total = int(total)
+    return total
