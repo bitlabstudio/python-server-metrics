@@ -1,5 +1,4 @@
 """Utilities for getting memory related metrics."""
-import getpass
 import psutil
 
 

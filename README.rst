@@ -26,10 +26,12 @@ Simply import the package and use it anywhere in your python code::
     from server_metrics.memory import get_memory
     from server_metrics.hard_disk import get_disk_usage
     from server_metrics.postgresql import get_database_size
+    from server_metrics.cpu import get_cpu_usage
 
     print get_memory()
     print get_disk_usage('$HOME')
     print get_database_size('my_role', 'my_db')
+    print get_cpu_usage('user')
 
 
 Contribute
