@@ -11,18 +11,16 @@ def get_memory_usage(user=None):
 
         (total memory, largest process' memory, largest process name)
 
-    :param user: String representing the user. If `None`, the current user
-      will be determined via `getpass.getuser()`.
+    :param user: String representing the user. If `None`, the total size of
+      all processes for all users will be returned.
 
     """
-    if user is None:
-        user = getpass.getuser()
     total = 0
     largest_process = 0
     largest_process_name = None
     for p in psutil.process_iter():
         p_user = p.username()
-        if p_user == user:
+        if user is None or p_user == user:
             try:
                 process_memory = p.memory_info()[0]
             except psutil.AccessDenied:

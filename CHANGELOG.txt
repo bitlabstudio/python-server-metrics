@@ -1,5 +1,8 @@
 === 0.1.X (to be released as 0.2) ===
 
+- When passing no user to `get_memory_usage` we now return total memory used
+  by all users.
+
 
 === 0.1 ===
 - Initial commit
