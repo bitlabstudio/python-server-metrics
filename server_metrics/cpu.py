@@ -11,10 +11,17 @@ def get_cpu_usage(user=None):
       for the given user.
 
     """
-    user_flag = ' '
-    if user is not None:
-        user_flag = ' -u {0} '.format(user)
-    cmd = "ps%s-o pcpu | awk '{sum+=$1} END {print sum}'" % user_flag
+    cmd = "ps aux"
     output = commands.getoutput(cmd)
-    total = decimal.Decimal(output)
-    return total
+    total = 0
+    largest_process = 0
+    largest_process_name = None
+    for row in output.split('\n')[1:]:
+        row = row.split()
+        if user is None or user == row[0]:
+            cpu = decimal.Decimal(row[2])
+            if cpu > total:
+                largest_process = cpu
+                largest_process_name = row[10]
+            total += decimal.Decimal(row[2])
+    return (total, largest_process, largest_process_name)
