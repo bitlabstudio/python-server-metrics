@@ -23,12 +23,12 @@ def get_cpu_usage(user=None, ignore_self=True):
     largest_process_name = None
     for row in output.split('\n')[1:]:
         row = row.split()
-        if row[1] == str(pid):
+        if row[1] == str(pid) and ignore_self:
             continue
         if user is None or user == row[0]:
             cpu = decimal.Decimal(row[2])
             if cpu > total:
                 largest_process = cpu
-                largest_process_name = row[10]
+                largest_process_name = ' '.join(row[10:len(row)])
             total += decimal.Decimal(row[2])
     return (total, largest_process, largest_process_name)
