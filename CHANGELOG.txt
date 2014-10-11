@@ -1,5 +1,6 @@
 === 0.1.X (to be released as 0.2) ===
 
+- added `memcached.get_memcached_usage`
 - BUGFIX: saving the whole process name for `get_cpu_usage`
 - added `cpu.get_cpu_usage`
 - When passing no user to `get_memory_usage` we now return total memory used
