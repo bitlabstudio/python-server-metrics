@@ -2,7 +2,7 @@
 import commands
 
 
-def get_database_size(db_user, db_name):
+def get_database_size(db_user, db_name, localhost=False):
     """
     Returns the total size for the given database role and name.
 
@@ -10,8 +10,11 @@ def get_database_size(db_user, db_name):
     :param db_name: String representing the database name.
 
     """
-    cmd = 'psql -U {0} -c "select pg_database_size(\'{1}\');"'.format(
-        db_user, db_name)
+    localhost_part = ''
+    if localhost:
+        localhost_part = '-h localhost '
+    cmd = 'psql {0}-U {1} -c "select pg_database_size(\'{2}\');"'.format(
+        localhost_part, db_user, db_name)
     total = commands.getoutput(cmd).split()[2]
     total = int(total)
     return total
