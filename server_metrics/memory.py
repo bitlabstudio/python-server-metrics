@@ -28,4 +28,4 @@ def get_memory_usage(user=None):
             if process_memory > largest_process:
                 largest_process = process_memory
                 largest_process_name = p.name()
-    return (total, largest_process, largest_process_name)
+    return total, largest_process, largest_process_name
