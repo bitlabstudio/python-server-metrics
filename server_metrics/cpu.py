@@ -1,7 +1,10 @@
 """Utilities for getting CPU related metrics."""
 import decimal
 import os
-import subprocess
+try:
+    from subprocess import getoutput
+except ImportError:
+    from commands import getoutput
 
 
 def get_cpu_usage(user=None, ignore_self=True):
@@ -16,7 +19,7 @@ def get_cpu_usage(user=None, ignore_self=True):
     """
     pid = os.getpid()
     cmd = "ps aux"
-    output = subprocess.getoutput(cmd)
+    output = getoutput(cmd)
     total = 0
     largest_process = 0
     largest_process_name = None

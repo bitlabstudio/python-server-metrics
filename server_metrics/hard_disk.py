@@ -1,5 +1,8 @@
 """Utilities for getting hard disk related metrics."""
-import subprocess
+try:
+    from subprocess import getoutput
+except ImportError:
+    from commands import getoutput
 
 
 def get_disk_usage(path):
@@ -11,5 +14,5 @@ def get_disk_usage(path):
 
     """
     cmd = 'du -sh --block-size=1 {0}'.format(path)
-    total = subprocess.getoutput(cmd).split()[0]
+    total = getoutput(cmd).split()[0]
     return int(total)

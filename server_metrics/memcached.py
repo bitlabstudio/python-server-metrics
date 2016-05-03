@@ -1,5 +1,8 @@
 """Utilities for getting memcached related metrics."""
-import subprocess
+try:
+    from subprocess import getoutput
+except ImportError:
+    from commands import getoutput
 
 
 def get_memcached_usage(socket=None):
@@ -10,7 +13,7 @@ def get_memcached_usage(socket=None):
 
     """
     cmd = 'echo \'stats\' | nc -U {0}'.format(socket)
-    output = subprocess.getoutput(cmd)
+    output = getoutput(cmd)
     curr_items = None
     bytes_ = None
 

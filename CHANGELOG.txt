@@ -1,5 +1,6 @@
-=== 0.2 ===
+=== 0.2.X (ongoing) ===
 
+- fixed command imports
 - added localhost=False parameter to postgres getter
 - added `memcached.get_memcached_usage`
 - BUGFIX: saving the whole process name for `get_cpu_usage`
