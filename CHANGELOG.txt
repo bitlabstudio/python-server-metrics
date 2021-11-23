@@ -1,5 +1,6 @@
 === 0.2.X (ongoing) ===
 
+- fixed syntax error in DESCRIPTION file
 - fixed command imports
 - added localhost=False parameter to postgres getter
 - added `memcached.get_memcached_usage`
